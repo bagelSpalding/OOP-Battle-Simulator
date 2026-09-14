@@ -1,4 +1,40 @@
+import random
+
 class Hero:
     """The hero blueprint will be implemented later in the project."""
 
+    def __init__(self, name):
+        self.name = name
+        self.health = 120
+        self.attack_power = 17
+
+    def crit(self):
+        if random.randint(0,50)%3==True:
+            
+            return random.randint(3,6)
+        else:
+         return 0
+
+    def attack(self):
+        crit_dmg=self.crit()
+        self.attack_power2=self.attack_power+crit_dmg
+        if crit_dmg>0:
+            print(f"Critical Hit! {crit_dmg} damage done.")
+        return random.randint(5,self.attack_power2)
+        
+        
+    def hero_Armor(self):
+        if random.randint(1,20)%2==True:
+            return random.randint(1,3)
+        else:
+            return 0
+
+    def take_damage(self, damage):
+        self.health = max(0, self.health - damage+self.hero_Armor())
+        print(f"{self.name} takes {damage} damage. Armor blocked {self.hero_Armor()} damage. Health: {self.health}")
+
+    def is_alive(self):
+        return self.health>0
+
     pass
+

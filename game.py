@@ -1,4 +1,5 @@
 from goblin import Goblin
+from hero import Hero
 
 
 ARENA_NAME = "The Cube of DOOM and DISPARE"
@@ -11,13 +12,18 @@ def main():
     print("The gates are opening...")
 
     goblin = Goblin("Gribble")
-
     goblin2=Goblin("Scribble Gibble the Majestic")
+    hero=Hero("Kaleb the Silly")
 
     print(f"{goblin.name} enters the arena with {goblin.health} health.")
-    print(f"{goblin2.name} enters the arena with {goblin.health} health.")
+    print(f"{goblin2.name} enters the arena with {goblin.health+15} health.")
     print("But no hero has answered the call... yet.")
 
+    heroAttack=hero.attack()
+    goblin.take_damage(heroAttack)
+    scribAtk=goblin2.attack()
+    goblin2.take_damage(heroAttack)
+    heroDamage=hero.take_damage(scribAtk)
 
 if __name__ == "__main__":
     main()
