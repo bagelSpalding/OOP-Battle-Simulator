@@ -19,9 +19,22 @@ class Hero:
         crit_dmg=self.crit()
         self.attack_power2=self.attack_power+crit_dmg
         if crit_dmg>0:
+            print(f"{self.name} swings with their sword")
             print(f"Critical Hit! {crit_dmg} damage done.")
         return random.randint(5,self.attack_power2)
-        
+
+    def magic(self):
+        rand=random.randint(0,50)
+        crit_dmg=self.crit()
+        print(f"{self.name} casts a spell")
+        if rand%2==1 or rand%5==1 or rand%3==1:
+            if crit_dmg>0:
+                print(f"Critical Hit! {crit_dmg+crit_dmg} damage done.")
+            return(random.randint(15,30)+crit_dmg+crit_dmg)
+        else:
+            print("Miss")
+            return 0
+            
         
     def hero_Armor(self):
         if random.randint(1,20)%2==True:
@@ -37,4 +50,3 @@ class Hero:
         return self.health>0
 
     pass
-
