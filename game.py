@@ -11,13 +11,23 @@ def battle(hero:Hero, enemy:Goblin, enemy2:Goblin):
         print("")
         
         hero_damage=hero.attack()
-       
+        hero_magic=hero.magic()
+
+
+        rand=random.randint(1,3)
+        rand2=random.randint(1,3)
 
         if enemy.is_alive():
-            enemy.take_damage(hero_damage)
+            if rand==1 or rand==2:
+                enemy.take_damage(hero_damage)
+            else:
+                enemy.take_damage(hero_magic)
         
         if enemy2.is_alive():
-            enemy2.take_damage(hero_damage)
+            if rand2==1 or rand2==2:
+                enemy2.take_damage(hero_damage)
+            else:
+                enemy2.take_damage(hero_magic)
         
 
 
