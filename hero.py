@@ -7,13 +7,14 @@ class Hero:
         self.name = name
         self.health = 120
         self.attack_power = 17
+        self.level=1
 
     def crit(self):
         if random.randint(0,50)%3==True:
             
             return random.randint(3,6)
         else:
-         return 0
+            return 0
 
     def attack(self):
         crit_dmg=self.crit()
@@ -51,5 +52,6 @@ class Hero:
 
     def is_alive(self):
         return self.health>0
+
 
     pass
