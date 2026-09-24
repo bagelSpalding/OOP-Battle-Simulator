@@ -61,6 +61,7 @@ def main():
     print(f"{goblin.name} enters the arena with {goblin.health} health.")
     print(f"{goblin2.name} enters the arena with {goblin2.health} health.")
     print("But no hero has answered the call... yet.")
+    print("")
     print(f"{hero.name} enters the arena with {hero.health} health.")
 
     battle(hero, goblin, goblin2)
