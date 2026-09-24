@@ -47,7 +47,8 @@ class Hero:
 
     def take_damage(self, damage):
         armor=self.hero_Armor()
-        self.health = max(0, self.health - damage+armor)
+        dmg_actual=max(0,damage,armor)
+        self.health = max(0, self.health - dmg_actual)
         print(f"{self.name} takes {damage} damage. Armor blocked {armor} damage. Health: {self.health}")
 
     def is_alive(self):
