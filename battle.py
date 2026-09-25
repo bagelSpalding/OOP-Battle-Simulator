@@ -5,8 +5,10 @@ import random
 
 
 def battle(hero:Hero, enemy:Goblin, enemy2:Goblin):
+    round_num=1
     while hero.is_alive() and (enemy.is_alive() or enemy2.is_alive()):
         print("===========================")
+        print(f"Turn {round_num}")
         print("")
 
 
@@ -37,6 +39,8 @@ def battle(hero:Hero, enemy:Goblin, enemy2:Goblin):
             enemy2_damage=enemy2.attack()
             hero.take_damage(enemy2_damage)
 
+        round_num+=1
+
 
     if hero.is_alive():
         print(f"{hero.name} has {hero.health} health remaining.")
@@ -45,8 +49,11 @@ def battle(hero:Hero, enemy:Goblin, enemy2:Goblin):
         print("DEFEATED")
         print(f"{enemy.name} and {enemy2.name} Win!")
 
+    
+
 
 def boss_battle(hero:Hero, boss:Boss):
+        round_num=1
         print("")
         print("===========================")
         hero.health=120
@@ -59,6 +66,7 @@ def boss_battle(hero:Hero, boss:Boss):
 
         while hero.is_alive() and boss.is_alive():
             print("===========================")
+            print(f"Turn {round_num}")
             print("")
 
 
@@ -82,6 +90,7 @@ def boss_battle(hero:Hero, boss:Boss):
                     boss_damage=boss.big_attack()
                     hero.take_damage(boss_damage)
 
+            round_num+=1
 
         if hero.is_alive():
             print(f"{hero.name} has {hero.health} health remaining.")

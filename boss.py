@@ -20,12 +20,13 @@ class Boss:
     def big_attack(self):
         rand=random.randint(1,3)
         crit_dmg=self.crit()
+        dmg=random.randint(15,30)
         print(f"{self.name} uses a heavy attack")
         if rand==1:
             if crit_dmg>0:
                 print(f"Critical Hit! {crit_dmg}+ damage done.")
-                return(random.randint(15,30)+crit_dmg)
-            return 0
+                return(dmg+crit_dmg)
+            return dmg
         else:
             print("Miss")
             return 0
