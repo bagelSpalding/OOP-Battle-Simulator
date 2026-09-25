@@ -25,9 +25,10 @@ class Boss:
             if crit_dmg>0:
                 print(f"Critical Hit! {crit_dmg}+ damage done.")
                 return(random.randint(15,30)+crit_dmg)
-            else:
-                print("Miss")
-        return 0
+            return 0
+        else:
+            print("Miss")
+            return 0
 
     def boss_Armor(self):
         return random.randint(2,5)
