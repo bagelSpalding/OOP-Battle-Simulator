@@ -19,25 +19,44 @@ def battle(hero:Hero, enemy:Goblin, enemy2:Goblin):
             if rand==1 or rand==2:
                 hero_damage=hero.attack()
                 enemy.take_damage(hero_damage)
+                if enemy.is_alive() and hero_damage>=15:
+                    enemy.half_flinch=True
+                    print(f"{enemy.name} flinched!")
             else:
                 hero_damage=hero.magic()
                 enemy.take_damage(hero_damage)
+                if hero_damage>=20:
+                    enemy.full_flinch=True
+                    print(f"{enemy.name} flinched!")
+        print("")
         
         if enemy2.is_alive():
             if rand2==1 or rand2==2:
                 hero_damage=hero.attack()
                 enemy2.take_damage(hero_damage)
+                if enemy2.is_alive() and hero_damage>=15:
+                    enemy2.half=True
+                    print(f"{enemy2.name} flinched!")
             else:
                 hero_damage=hero.magic()
                 enemy2.take_damage(hero_damage)
+                if enemy2.is_alive() and hero_damage>=20:
+                    enemy2.full=True
+                    print(f"{enemy2.name} flinched!")
+        print("")
 
         
         if enemy.is_alive():
             enemy_damage=enemy.attack()
+            print(f"{enemy.name} is attacking {hero.name}")
             hero.take_damage(enemy_damage)
+            print("")
+
         if  enemy2.is_alive():
             enemy2_damage=enemy2.attack()
+            print(f"{enemy2.name} is attacking {hero.name}")
             hero.take_damage(enemy2_damage)
+            print("")
 
         round_num+=1
 
@@ -80,6 +99,9 @@ def boss_battle(hero:Hero, boss:Boss):
                 else:
                     hero_damage=hero.magic()
                     boss.take_damage(hero_damage)
+                    if boss.is_alive() and hero_damage>=20:
+                        boss.flinched = True
+                        print(f"{boss.name} flinched!")
 
         
             if boss.is_alive():

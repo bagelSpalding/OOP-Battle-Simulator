@@ -7,6 +7,7 @@ class Boss:
         self.name = name
         self.health = 200
         self.attack_power = 20
+        self.flinched = False
 
     def crit(self):
         if random.randint(0,50)%3==True:
@@ -15,14 +16,27 @@ class Boss:
             return 0
 
     def norm_attack(self):
-        return random.randint(15, self.attack_power)
+        boss_damage = random.randint(15, self.attack_power)
+        if self.flinched:
+            boss_damage=boss_damage//(2/3)
+            self.flinched = False
+            print(f"{self.name}'s attack was weakened!")
+        return boss_damage
 
     def big_attack(self):
         rand=random.randint(1,3)
         crit_dmg=self.crit()
-        dmg=random.randint(15,30)
         print(f"{self.name} uses a heavy attack")
+
         if rand==1:
+            dmg=random.randint(15,30)
+
+            if self.flinched:
+                dmg=dmg//(2/3)
+                self.flinched = False
+                print(f"{self.name}'s attack was weakened!")
+            
+
             if crit_dmg>0:
                 print(f"Critical Hit! {crit_dmg}+ damage done.")
                 return(dmg+crit_dmg)
