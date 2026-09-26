@@ -8,6 +8,7 @@ class Hero:
         self.health = 120
         self.attack_power = 17
         self.level=1
+        self.gold=0
 
     def crit(self):
         if random.randint(0,50)%3==True:
